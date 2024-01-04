@@ -25,7 +25,7 @@ public class EnemyRewardModifier {
   }
 
   @EventListener
-  public static void registerConfig(final ConfigRegistryEvent event) {
+  public void registerConfig(final ConfigRegistryEvent event) {
     CONFIG_REGISTRAR.registryEvent(event);
   }
 
