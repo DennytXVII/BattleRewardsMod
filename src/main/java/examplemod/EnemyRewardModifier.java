@@ -2,9 +2,12 @@ package examplemod;
 
 import legend.core.GameEngine;
 import legend.game.modding.events.battle.EnemyRewardsEvent;
+import legend.game.modding.events.characters.CharacterStatsEvent;
 import legend.game.modding.events.input.InputReleasedEvent;
 import legend.game.saves.ConfigEntry;
 import legend.game.saves.ConfigRegistryEvent;
+import legend.game.types.CharacterData2c;
+import legend.game.types.LevelStuff08;
 import org.legendofdragoon.modloader.Mod;
 import org.legendofdragoon.modloader.events.EventListener;
 import org.legendofdragoon.modloader.registries.Registrar;
@@ -34,8 +37,6 @@ public class EnemyRewardModifier {
   public static final RegistryDelegate<GoldModifierConfigEntry> GOLD_MODIFIER_CONFIG = CONFIG_REGISTRAR.register("gold_modifier", GoldModifierConfigEntry::new);
   public static final RegistryDelegate<XPModifierConfigEntry> XP_MODIFIER_CONFIG = CONFIG_REGISTRAR.register("xp_modifier", XPModifierConfigEntry::new);
 
-
-
   @EventListener
   public void BattleRewardModifier(EnemyRewardsEvent event) {
     event.gold = Math.round(GameEngine.CONFIG.getConfig(EnemyRewardModifier.GOLD_MODIFIER_CONFIG.get()) * event.gold);
@@ -43,6 +44,8 @@ public class EnemyRewardModifier {
     event.xp = Math.round(GameEngine.CONFIG.getConfig(EnemyRewardModifier.XP_MODIFIER_CONFIG.get()) * event.xp);
 
   }
+
+
 }
 
 
