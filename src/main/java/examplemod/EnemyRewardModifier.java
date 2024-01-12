@@ -2,6 +2,7 @@ package examplemod;
 
 import legend.core.GameEngine;
 import legend.game.modding.events.battle.EnemyRewardsEvent;
+import legend.game.modding.events.characters.AdditionHitMultiplierEvent;
 import legend.game.modding.events.characters.CharacterStatsEvent;
 import legend.game.modding.events.input.InputReleasedEvent;
 import legend.game.saves.ConfigEntry;
@@ -36,13 +37,18 @@ public class EnemyRewardModifier {
 
   public static final RegistryDelegate<GoldModifierConfigEntry> GOLD_MODIFIER_CONFIG = CONFIG_REGISTRAR.register("gold_modifier", GoldModifierConfigEntry::new);
   public static final RegistryDelegate<XPModifierConfigEntry> XP_MODIFIER_CONFIG = CONFIG_REGISTRAR.register("xp_modifier", XPModifierConfigEntry::new);
-
+  public static final RegistryDelegate<DXPModifierConfigEntry> DXP_MODIFIER_CONFIG = CONFIG_REGISTRAR.register("dxp_modifier", DXPModifierConfigEntry::new);
   @EventListener
   public void BattleRewardModifier(EnemyRewardsEvent event) {
     event.gold = Math.round(GameEngine.CONFIG.getConfig(EnemyRewardModifier.GOLD_MODIFIER_CONFIG.get()) * event.gold);
 
     event.xp = Math.round(GameEngine.CONFIG.getConfig(EnemyRewardModifier.XP_MODIFIER_CONFIG.get()) * event.xp);
 
+  }
+  @EventListener
+  public void DragoonEXPModifier(final AdditionHitMultiplierEvent event) {
+  event.additionSpMulti = Math.round(GameEngine.CONFIG.getConfig(EnemyRewardModifier.DXP_MODIFIER_CONFIG.get()) * event.additionSpMulti);
+  
   }
 
 

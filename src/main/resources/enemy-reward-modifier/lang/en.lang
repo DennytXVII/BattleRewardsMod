@@ -2,3 +2,4 @@
 enemy-reward-modifier.name = Enemy Reward Modifier
 enemy-reward-modifier.config.gold_modifier.label = Gold Multiplier
 enemy-reward-modifier.config.xp_modifier.label = EXP Multiplier
+enemy-reward-modifier.config.dxp_modifier.label = Dragoon EXP Multiplier(SP)
